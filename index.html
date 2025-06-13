@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KIRTI Parivar – Launch Page</title>
+    <link href="./kriti.jpeg" rel="icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ... your existing styles here ... */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .explore-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgb(141, 39, 39);
+            padding: 12px 30px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: rgb(255, 132, 0);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .explore-btn:hover {
+            background-color: white;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        /* Fade and slide animation */
+        .fade-slide {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeSlideIn 1s forwards ease-out;
+            color: rgb(255, 255, 255);
+
+        }
+
+        @keyframes fadeSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Button hover bounce and glow */
+        .bounce-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .bounce-hover:hover {
+            transform: scale(1.1) translateY(-4px);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.95);
+            color: #000;
+        }
+
+        /* Optional stagger delay for elements */
+        .fade-slide:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .fade-slide:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .fade-slide:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+
+        /* Zoom the video on small screens */
+        @media (max-width: 768px) {
+            .video-background {
+                transform: scale(1.2);
+                width: 333px;
+            }
+        }.tittle {
+  background: rgba(255, 255, 255, 0.08); /* translucent glass effect */
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 24px;
+  padding: 30px 40px;
+
+  
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  margin: 20px auto;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.tittle:hover {
+  background: rgba(255, 255, 255, 0.443);
+  border-color: white;
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Video -->
+    <video id="bg-video" class="video-background" autoplay muted loop playsinline>
+        <!-- Default source will be set by JS -->
+    </video>
+
+    <div class="content">
+        <div class="tittle">
+            <h1 class="fade-slide">KIRTI Parivar</h1>
+            <p class="fade-slide" style="animation-delay: 0.2s;">Kabir Inspired Rohana Trust Initiative</p>
+             <button class="explore-btn bounce-hover fade-slide" style="animation-delay: 0.4s;"
+            onclick="window.open('kirti.html')">
+            Explore More
+        </button>
+        </div>
+        <br>
+       
+    </div>
+
+    <script>
+        // Define video sources for desktop and mobile
+        const desktopVideo = "./WhatsApp Video 2025-05-30 at 11.59.36 PM.mp4 (1).mp4";
+        const mobileVideo = "WhatsApp Video 2025-05-30 at 11.59.36 PM.mp4 (1).mp4"; // Replace with your mobile video file path
+
+        const videoElement = document.getElementById('bg-video');
+
+        function setVideoSource() {
+            if (window.innerWidth <= 768) {
+                // Mobile screen - set mobile video
+                if (videoElement.getAttribute('src') !== mobileVideo) {
+                    videoElement.src = mobileVideo;
+                    videoElement.load();
+                    videoElement.play();
+                }
+            } else {
+                // Desktop screen - set desktop video
+                if (videoElement.getAttribute('src') !== desktopVideo) {
+                    videoElement.src = desktopVideo;
+                    videoElement.load();
+                    videoElement.play();
+                }
+            }
+        }
+
+        // Initial set
+        setVideoSource();
+
+        // Optional: Update video on window resize
+        window.addEventListener('resize', () => {
+            setVideoSource();
+        });
+    </script>
+
+</body>
+
+</html>
