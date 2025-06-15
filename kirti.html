@@ -5,9 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KIRTI Parivar - Kabir Inspired Rohana Trust Initiative</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="./logo.png" rel="icon">
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
     <style>
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #f7931e;
+            --accent-color: #ffd700;
+            --dark-color: #333;
+            --light-color: #f8f9fa;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,133 +33,144 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--dark-color);
             overflow-x: hidden;
         }
 
-        /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Header */
-        .header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
-            color: white;
-            padding: 1rem 0;
-            z-index: 1000;
+        /* Custom Navbar Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
 
-        .header.scrolled {
-            background: rgba(255, 107, 53, 0.95);
+        .navbar.scrolled {
+            background: rgba(255, 107, 53, 0.95) !important;
             backdrop-filter: blur(10px);
         }
 
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .navbar-brand img {
+            height: 40px;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
         }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo i {
-            font-size: 2rem;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px #fff, 0 0 20px #fff;
-            }
-
-            to {
-                text-shadow: 0 0 20px #fff, 0 0 30px #fff;
-            }
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
+        .navbar-nav .nav-link {
+            color: white !important;
             font-weight: 500;
+            margin: 0 0.5rem;
             transition: all 0.3s ease;
             position: relative;
         }
 
-        .nav-links a:hover {
+        .navbar-nav .nav-link:hover {
+            color: var(--accent-color) !important;
             transform: translateY(-2px);
         }
 
-        .nav-links a::after {
+        .navbar-nav .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
+            bottom: 0;
+            left: 50%;
             width: 0;
             height: 2px;
-            background: white;
-            transition: width 0.3s ease;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
 
-        .nav-links a:hover::after {
+        .navbar-nav .nav-link:hover::after {
             width: 100%;
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
         }
 
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="temple" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23ff6b35;stop-opacity:0.8"/><stop offset="100%" style="stop-color:%23f7931e;stop-opacity:0.8"/></linearGradient></defs><rect width="1200" height="800" fill="url(%23temple)"/><circle cx="600" cy="400" r="200" fill="white" opacity="0.1"/><polygon points="500,200 700,200 650,150 550,150" fill="white" opacity="0.2"/><rect x="550" y="300" width="100" height="200" fill="white" opacity="0.2"/></svg>');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
             position: relative;
+            overflow: hidden;
         }
 
-        .hero-content {
-            max-width: 800px;
-            padding: 2rem;
-            animation: fadeInUp 1.5s ease;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><circle cx="600" cy="400" r="200" fill="white" opacity="0.05"/><polygon points="500,200 700,200 650,150 550,150" fill="white" opacity="0.1"/><rect x="550" y="300" width="100" height="200" fill="white" opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .kabir-quote {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            font-style: italic;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn-hero {
+            background: var(--accent-color);
+            color: var(--dark-color);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+            color: var(--dark-color);
         }
 
         @keyframes fadeInUp {
@@ -156,261 +185,75 @@
             }
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            animation: slideInLeft 1s ease 0.5s both;
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .hero h2 {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-style: italic;
-            animation: slideInRight 1s ease 0.7s both;
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .quote {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin: 2rem 0;
-            padding: 1rem;
-            border-left: 4px solid #f7931e;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            animation: fadeIn 1s ease 1s both;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #f7931e, #ff6b35);
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            margin-top: 2rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(247, 147, 30, 0.3);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(247, 147, 30, 0.5);
-        }
-
-        /* Floating particles */
-        .particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            animation: float 6s infinite linear;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateX(-50%) translateY(0);
-            }
-
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
-        }
-
-        /* Sections */
-        .section {
-            padding: 80px 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-
-        .section h2 {
+        /* Section Styles */
+        .section-title {
             text-align: center;
             font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
             margin-bottom: 3rem;
-            color: #ff6b35;
             position: relative;
         }
 
-        .section h2::after {
+        .section-title::after {
             content: '';
             position: absolute;
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 80px;
             height: 3px;
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            background: var(--accent-color);
             border-radius: 2px;
         }
 
         /* About Section */
-        .about {
-            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
+        .about-section {
+            padding: 100px 0;
+            background: var(--light-color);
         }
 
         .about-image {
             text-align: center;
         }
 
-        .temple-icon {
-            font-size: 15rem;
-            color: #ff6b35;
-            opacity: 0.8;
-            animation: float-temple 4s ease-in-out infinite;
+        .about-image img {
+            max-width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
-        @keyframes float-temple {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
+        .about-image img:hover {
+            transform: scale(1.05);
         }
 
-        /* Mission Cards */
-        .mission {
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+        /* Mission Section */
+        .mission-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
         }
 
-        .mission h2 {
+        .mission-section .section-title {
             color: white;
         }
 
-        .mission h2::after {
+        .mission-section .section-title::after {
             background: white;
-        }
-
-        .mission-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
         }
 
         .mission-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 20px;
+            padding: 2rem;
             text-align: center;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            height: 100%;
         }
 
         .mission-card:hover {
@@ -422,32 +265,73 @@
         .mission-card i {
             font-size: 3rem;
             margin-bottom: 1rem;
-            color: #fff;
+            color: var(--accent-color);
         }
 
-        .mission-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+        /* Gallery Section */
+        .gallery-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
         }
 
         /* Teachings Section */
-        .teachings {
-            background: #f8f9fa;
-        }
-
-        .teachings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+        .teachings-section {
+            padding: 100px 0;
+            background: var(--light-color);
         }
 
         .teaching-card {
             background: white;
-            padding: 2rem;
             border-radius: 15px;
+            padding: 2rem;
+            border-left: 5px solid var(--primary-color);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            border-left: 5px solid #ff6b35;
+            height: 100%;
         }
 
         .teaching-card:hover {
@@ -455,9 +339,9 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .teaching-card h3 {
-            color: #ff6b35;
-            font-size: 1.3rem;
+        .teaching-card h5 {
+            color: var(--primary-color);
+            font-weight: 600;
             margin-bottom: 1rem;
         }
 
@@ -470,24 +354,77 @@
 
         .english-text {
             font-weight: 500;
-            color: #333;
+            color: var(--dark-color);
+        }
+
+        /* Join Us Section */
+        .join-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            text-align: center;
+        }
+
+        .join-section .section-title {
+            color: white;
+        }
+
+        .join-section .section-title::after {
+            background: white;
+        }
+
+        .join-benefits {
+            margin: 3rem 0;
+        }
+
+        .benefit-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .benefit-item i {
+            color: var(--accent-color);
+            margin-right: 1rem;
+        }
+
+        .btn-join {
+            background: var(--accent-color);
+            color: var(--dark-color);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-join:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+            color: var(--dark-color);
         }
 
         /* Team Section */
-        .team {
-            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+        .team-section {
+            padding: 100px 0;
+            background: white;
         }
 
         .team-card {
             background: white;
-            padding: 2rem;
             border-radius: 20px;
+            padding: 2rem;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
@@ -516,135 +453,83 @@
         }
 
         .team-avatar {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 50%;
-            margin: 0 auto 1rem;
+            margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            color: white;
+            position: relative;
+            overflow: hidden;
         }
 
-        .team-card h3 {
-            color: #ff6b35;
+        .team-avatar img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .team-card h5 {
+            color: var(--primary-color);
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
-        .team-card .role {
+        .team-role {
             color: #666;
             font-style: italic;
             margin-bottom: 1rem;
         }
 
         /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-            color: white;
-        }
-
-        .contact h2 {
-            color: white;
-        }
-
-        .contact h2::after {
-            background: white;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
+        .contact-section {
+            padding: 100px 0;
+            background: var(--light-color);
         }
 
         .contact-info {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
+            background: white;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .contact-item {
             display: flex;
             align-items: center;
             margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--light-color);
+            border-radius: 10px;
             transition: all 0.3s ease;
         }
 
         .contact-item:hover {
+            background: var(--primary-color);
+            color: white;
             transform: translateX(10px);
         }
 
         .contact-item i {
             font-size: 1.5rem;
+            color: var(--primary-color);
             margin-right: 1rem;
             width: 30px;
         }
 
-        .contact-form {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            color: #333;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            background: white;
-            transform: scale(1.02);
-        }
-
-        .submit-btn {
-            background: white;
-            color: #ff6b35;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        .contact-item:hover i {
+            color: white;
         }
 
         /* Footer */
         .footer {
-            background: #333;
+            background: var(--dark-color);
             color: white;
+            padding: 50px 0 20px;
             text-align: center;
-            padding: 2rem 0;
         }
 
         .social-links {
@@ -659,344 +544,1644 @@
         }
 
         .social-links a:hover {
-            color: #ff6b35;
+            color: var(--primary-color);
             transform: translateY(-3px);
-        }
-
-        /* Scroll animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: flex;
-            }
-
-            .hero h1 {
+            .hero-content h1 {
                 font-size: 2.5rem;
             }
 
-            .hero h2 {
+            .hero-content h2 {
                 font-size: 1.2rem;
             }
 
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .temple-icon {
-                font-size: 8rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 60px 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
+            .section-title {
                 font-size: 2rem;
             }
 
-            .quote {
-                font-size: 1rem;
+            .about-image img {
+                height: 300px;
             }
 
-            .mission-cards,
-            .teachings-grid,
-            .team-grid {
-                grid-template-columns: 1fr;
+            .gallery-item img {
+                height: 200px;
             }
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar-scroll {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--accent-color);
+            z-index: 10000;
+            transition: width 0.3s ease;
+        }
+
+        /* Custom AOS animations */
+        [data-aos="fade-up-right"] {
+            transform: translate3d(-100px, 100px, 0);
+            opacity: 0;
+        }
+
+        [data-aos="fade-up-right"].aos-animate {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+
+
+
+        .team-member {
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-color);
+            color: var(--dark-color);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .display-4 {
+            color: var(--dark-color);
+        }
+
+        .team-member .card {
+            border-left: 4px solid var(--accent-color);
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <nav class="nav">
-            <div class="logo">
-                <img src="./logo.png" alt="" height="40px">
+    <!-- Progress Bar -->
+    <div class="progress-bar-scroll"></div>
 
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#mission">Mission</a></li>
-                <li><a href="#teachings">Teachings</a></li>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+    
+                              <h1>Kriti Parivar</h1>
 
-                <li><a href=""> 🤝 Join Us</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#mission">Mission</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#teachings">Teachings</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#ourkrititeam">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#join">🤝 Join Us</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ourkritiblogs">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="particles"></div>
-        <div class="hero-content">
-            <h1> KIRTI Parivar</h1>
-            <h2>Kabir Inspired Rohana Trust Initiative</h2>
-            <div class="quote">
-                "कबीर खड़े बाज़ार में, मांगे सबकी खैर,
-
-                ना काहू से दोस्‍ती, न काहू से बैर |"<br>
-                <em>- Sant Kabir</em>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="hero-content">
+                        <h1 class="mb-4">KIRTI Parivar</h1>
+                        <h2 class="mb-4">Kabir Inspired Rohana Trust Initiative</h2>
+                        <div class="kabir-quote">
+                            <p class="mb-2">"कबीर खड़े बाज़ार में, मांगे सबकी खैर,<br>
+                                ना काहू से दोस्‍ती, न काहू से बैर।"</p>
+                            <small><em>- Sant Kabir</em></small>
+                        </div>
+                        <p class="lead mb-4">A Spiritual and Social Journey at Kabir Kuti, Rohana</p>
+                        <a href="#about" class="btn btn-hero btn-lg">Begin Your Journey</a>
+                    </div>
+                </div>
             </div>
-            <p>A Spiritual and Social Journey at Kabir Kuti, Rohana</p>
-            <a href="#about" class="cta-button">Begin Your Journey</a>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-            <i class="fas fa-chevron-down"></i> <i class="fas fa-chevron-down"></i>
         </div>
     </section>
+
+
+
+<!-- dohe -->
+  <div class="card text-center border-0 shadow p-4">
+ 
+    <p class="fs-5 fw-semibold">
+      बुरा जो देखन मैं चला, बुरा न मिलिया कोय।<br>
+      जो दिल खोजा आपना, मुझसा बुरा न कोय।।
+    </p>
+   
+  </div>
+
+
+
+
+
+
 
     <!-- About Section -->
-    <section class="section about" id="about">
-        <h2 class="animate-on-scroll">What is KIRTI?</h2>
-        <div class="about-content">
-            <div class="about-text animate-on-scroll">
-                <p><strong>KIRTI</strong> stands for <em>Kabir Inspired Rohana Trust Initiative</em> - a spiritual,
-                    educational, and social movement based at the sacred <strong>Kabir Kuti, Rohana</strong>.</p>
-
-                <p>Founded to spread the timeless teachings of <strong>Sant Kabir</strong> to today's youth, KIRTI
-                    represents the perfect harmony of <em>Faith + Wisdom + Action</em>.</p>
-
-                <p>We believe in awakening the inner consciousness through the profound wisdom of Sant Kabir, creating a
-                    bridge between ancient spiritual knowledge and modern life challenges.</p>
-
-                <p>Our initiative serves as a beacon of hope, guiding young minds towards self-realization, compassion,
-                    and purposeful living.</p>
-            </div>
-            <div class="about-image animate-on-scroll">
-                <img src="./kriti.jpeg" alt="" height="322px" width="311px">
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up" style="color: #f7931e;">What is KIRTI?</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <p class="lead mb-4"><strong>KIRTI</strong> stands for <em>Kabir Inspired Rohana Trust
+                            Initiative</em> - a spiritual, educational, and social movement based at the sacred
+                        <strong>Kabir Kuti, Rohana</strong>.
+                    </p>
+                    <p class="mb-4">Founded to spread the timeless teachings of <strong>Sant Kabir</strong> to today's
+                        youth, KIRTI represents the perfect harmony of <em>Faith + Wisdom + Action</em>.</p>
+                    <p class="mb-4">We believe in awakening the inner consciousness through the profound wisdom of Sant
+                        Kabir, creating a bridge between ancient spiritual knowledge and modern life challenges.</p>
+                    <p>Our initiative serves as a beacon of hope, guiding young minds towards self-realization,
+                        compassion, and purposeful living.</p>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="about-image">
+                        <img src="./kriti.jpeg" alt="KIRTI Initiative" class="img-fluid">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+
+<!-- dohe -->
+  <div class="card text-center border-0 shadow p-4">
+ 
+    <p class="fs-5 fw-semibold">
+     बुरा जो देखन मैं चला, बुरा न मिलिया कोय। <br>
+जो दिल खोजा आपना, मुझसा बुरा न कोय।।
+    </p>
+   
+  </div>
+<br>
+
     <!-- Mission Section -->
-    <section class="section mission" id="mission">
-        <h2 class="animate-on-scroll">Our Sacred Mission</h2>
-        <div class="mission-cards">
-            <div class="mission-card animate-on-scroll">
-                <i class="fas fa-heart"></i>
-                <h3>Inner Peace</h3>
-                <p>To awaken inner peace and purpose in young minds through the transformative teachings of Sant Kabir
-                </p>
+    <section class="mission-section" id="mission">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Sacred Mission</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mission-card">
+                        <i class="fas fa-heart"></i>
+                        <h4 class="mb-3">Inner Peace</h4>
+                        <p>To awaken inner peace and purpose in young minds through the transformative teachings of Sant
+                            Kabir</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="mission-card">
+                        <i class="fas fa-brain"></i>
+                        <h4 class="mb-3">Self-Realization</h4>
+                        <p>To teach self-realization, compassion, and timeless values from Sant Kabir's divine wisdom
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="mission-card">
+                        <i class="fas fa-hands-helping"></i>
+                        <h4 class="mb-3">Sacred Service</h4>
+                        <p>To offer a sacred space for learning, meditation, satsang, and selfless service to humanity
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="mission-card animate-on-scroll">
-                <i class="fas fa-brain"></i>
-                <h3>Self-Realization</h3>
-                <p>To teach self-realization, compassion, and timeless values from Sant Kabir's divine wisdom</p>
-            </div>
-            <div class="mission-card animate-on-scroll">
-                <i class="fas fa-hands-helping"></i>
-                <h3>Sacred Service</h3>
-                <p>To offer a sacred space for learning, meditation, satsang, and selfless service to humanity</p>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up" style="color: #f7931e;">Our Sacred Journey</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1604608672516-a5e4e6239a7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Kabir Kuti Meditation">
+                        <div class="gallery-overlay">
+                            <div>
+                                <h5>Meditation Sessions</h5>
+                                <p>Daily meditation and spiritual practice at Kabir Kuti</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1609752354580-4e06a8b8b5f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Satsang Gathering">
+                        <div class="gallery-overlay">
+                            <div>
+                                <h5>Satsang Gatherings</h5>
+                                <p>Weekly spiritual discussions and knowledge sharing</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1524863479829-916d8e77f114?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Youth Activities">
+                        <div class="gallery-overlay">
+                            <div>
+                                <h5>Youth Activities</h5>
+                                <p>Engaging young minds in spiritual and social activities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1544037150-6e4ecfcb8b8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Community Service">
+                        <div class="gallery-overlay">
+                            <div>
+                                <h5>Community Service</h5>
+                                <p>Serving the community through various social initiatives</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Kabir Teachings">
+                        <div class="gallery-overlay">
+                            <div>
+                                <h5>Kabir Teachings</h5>
+                                <p>Studying and understanding the profound wisdom of Sant Kabir</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1609231959018-b6adf4c7d7c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Spiritual Festivals">
+                        <div class="gallery-overlay">
+                            <div>
+                                <h5>Spiritual Festivals</h5>
+                                <p>Celebrating spiritual festivals and cultural events</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Teachings Section -->
-    <section class="section teachings" id="teachings">
-        <h2 class="animate-on-scroll">Sant Kabir's Divine Teachings</h2>
-        <div class="teachings-grid">
-            <div class="teaching-card animate-on-scroll">
-                <h3>Self-Reflection</h3>
-                <div class="hindi-text">"Bura Jo Dekhan Main Chala, Bura Na Miliya Koye..."</div>
-                <div class="english-text">Look within yourself, not at others' flaws. True transformation begins with
-                    self-reflection.</div>
+    <section class="teachings-section" id="teachings">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up" style="color: #f7931e;">Sant Kabir's Teachings</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="teaching-card">
+                        <h5>Unity & Brotherhood</h5>
+                        <p class="hindi-text">"सब धरती कागद करूं, लेखनी सब वनराज"</p>
+                        <p class="english-text">All humanity is one, transcending all divisions of caste, creed, and
+                            religion.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="teaching-card">
+                        <h5>Inner Devotion</h5>
+                        <p class="hindi-text">"माला फेरत जुग भया, फिरा न मन का फेर"</p>
+                        <p class="english-text">True devotion comes from within, not from external rituals and
+                            practices.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="teaching-card">
+                        <h5>Truth & Simplicity</h5>
+                        <p class="hindi-text">"साईं इतना दीजिये, जा मे कुटुम समाय"</p>
+                        <p class="english-text">Live simply and truthfully, seeking only what is necessary for a
+                            meaningful life.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="teaching-card">
+                        <h5>Self-Realization</h5>
+                        <p class="hindi-text">"जो घट प्रेम न संचरे, जो घट जान समान"</p>
+                        <p class="english-text">Know thyself and realize the divine presence within your own heart.</p>
+                    </div>
+                </div>
             </div>
-            <div class="teaching-card animate-on-scroll">
-                <h3>Patience & Peace</h3>
-                <div class="hindi-text">"Dheere Dheere Re Mana, Dheere Sab Kuch Hoye..."</div>
-                <div class="english-text">Have patience in life. Everything happens in its own divine time with steady
-                    progress.</div>
+        </div>
+    </section>
+
+<!-- dohe -->
+  <div class="card text-center border-0 shadow p-4">
+ 
+    <p class="fs-5 fw-semibold">
+दुख में सुमिरन सब करें, सुख में करे न कोय। <br>
+जो सुख में सुमिरन करे, तो दुख काहे को होय।।
+    </p>
+   
+  </div>
+<br>
+    
+    <!-- Team Section -->
+    <section class="py-5 bg-light" id="ourkrititeam">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="display-4 fw-bold mb-3" style="color: #f7931e;">Meet Our Team</h2>
+                    <p class="lead text-muted mb-5">We're a passionate group of professionals dedicated to delivering
+                        exceptional results for our clients.</p>
+                </div>
             </div>
-            <div class="teaching-card animate-on-scroll">
-                <h3>Living Wisdom</h3>
-                <div class="hindi-text">"Pothi Padh Padh Kar Jag Mua, Pandit Bhayo Na Koye..."</div>
-                <div class="english-text">True knowledge comes from living values, not just reading books. Experience is
-                    the greatest teacher.</div>
+
+            <!-- Team Members -->
+            <div class="row g-4">
+                <!-- Team Member 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./team/himanshu.png" alt="John Smith" class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Himanshu Patil</h5>
+                            <p class="text-muted mb-3">1st Year</p>
+                            <p class="card-text">John brings over 15 years of industry experience and leads our company
+                                with vision and innovation.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./team/sanchit.jpg" alt="Sarah Johnson" class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Sanchit Patil</h5>
+                            <p class="text-muted mb-3">3rd Year</p>
+                            <p class="card-text">Sarah is our tech visionary, overseeing all technical aspects and
+                                ensuring we stay ahead of the curve.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./team/ayush lolusare.jpg" alt="Mike Brown" class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Ayush Lolusare</h5>
+                            <p class="text-muted mb-3">1st Year</p>
+                            <p class="card-text">Mike is our coding guru who transforms ideas into beautiful, functional
+                                applications that users love.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" aria-label="Portfolio"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./kriti.jpeg" alt="Emily Davis" class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Arthav Bhajan</h5>
+                            <p class="text-muted mb-3">2st Year</p>
+                            <p class="card-text">Emily creates stunning user experiences that are both beautiful and
+                                intuitive, making our products a joy to use.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                                <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 5 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./team/anvesh mahant.jpeg" alt="David Wilson"
+                                class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Anvesh Mahant</h5>
+                            <p class="text-muted mb-3">2st Year</p>
+                            <p class="card-text">David drives our marketing initiatives with creative strategies that
+                                help us connect with our audience effectively.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 6 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./kriti.jpeg" alt="Lisa Chen"
+                                class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Ayush Mahant</h5>
+                            <p class="text-muted mb-3">1st year</p>
+                            <p class="card-text">Lisa ensures all our projects run smoothly and are delivered on time,
+                                keeping everything organized and efficient.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                                <a href="#" aria-label="Phone"><i class="fas fa-phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <!-- Team Members -->
+            <div class="row g-4">
+                <!-- Team Member 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./kriti.jpeg" alt="John Smith" class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Shubham Nakade</h5>
+                            <p class="text-muted mb-3">1st Year</p>
+                            <p class="card-text">John brings over 15 years of industry experience and leads our company
+                                with vision and innovation.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./team/kunal tagde.jpeg" alt="Sarah Johnson" class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Kunal Tagle</h5>
+                            <p class="text-muted mb-3">3rd Year</p>
+                            <p class="card-text">Sarah is our tech visionary, overseeing all technical aspects and
+                                ensuring we stay ahead of the curve.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./team/askay.jpeg" alt="Mike Brown" class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Akshay Lone</h5>
+                            <p class="text-muted mb-3">1st Year</p>
+                            <p class="card-text">Mike is our coding guru who transforms ideas into beautiful, functional
+                                applications that users love.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" aria-label="Portfolio"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <!-- Team Member 5 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./team/kunal lolusare.jpeg" alt="David Wilson"
+                                class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Kunal Lolusare</h5>
+                            <p class="text-muted mb-3">2st Year</p>
+                            <p class="card-text">David drives our marketing initiatives with creative strategies that
+                                help us connect with our audience effectively.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 6 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./kriti.jpeg" alt="Lisa Chen"
+                                class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Gaurav Mahant</h5>
+                            <p class="text-muted mb-3">1st year</p>
+                            <p class="card-text">Lisa ensures all our projects run smoothly and are delivered on time,
+                                keeping everything organized and efficient.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                                <a href="#" aria-label="Phone"><i class="fas fa-phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./kriti.jpeg" alt="Lisa Chen"
+                                class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Manav Bhajan</h5>
+                            <p class="text-muted mb-3">1st year</p>
+                            <p class="card-text">Lisa ensures all our projects run smoothly and are delivered on time,
+                                keeping everything organized and efficient.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                                <a href="#" aria-label="Phone"><i class="fas fa-phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+              <!-- Team Members -->
+            <div class="row g-4">
+                <!-- Team Member 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./team/Paras Mahant.jpeg" alt="John Smith" class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Paras Mahant</h5>
+                            <p class="text-muted mb-3">1st Year</p>
+                            <p class="card-text">John brings over 15 years of industry experience and leads our company
+                                with vision and innovation.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./team/ishant bhajan.jpeg" alt="Sarah Johnson" class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Ishan Bhajan</h5>
+                            <p class="text-muted mb-3">3rd Year</p>
+                            <p class="card-text">Sarah is our tech visionary, overseeing all technical aspects and
+                                ensuring we stay ahead of the curve.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./kriti.jpeg" alt="Mike Brown" class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">mayank bhajan</h5>
+                            <p class="text-muted mb-3">1st Year</p>
+                            <p class="card-text">Mike is our coding guru who transforms ideas into beautiful, functional
+                                applications that users love.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="#" aria-label="Portfolio"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./team/sanchit mahant.jpeg" alt="Emily Davis" class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Sanchit Mahant</h5>
+                            <p class="text-muted mb-3">2st Year</p>
+                            <p class="card-text">Emily creates stunning user experiences that are both beautiful and
+                                intuitive, making our products a joy to use.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                                <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 5 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./kriti.jpeg" alt="David Wilson"
+                                class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Yash Nakade</h5>
+                            <p class="text-muted mb-3">2st Year</p>
+                            <p class="card-text">David drives our marketing initiatives with creative strategies that
+                                help us connect with our audience effectively.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Team Member 5 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card team-member border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <img src="./kriti.jpeg" alt="David Wilson"
+                                class="team-img rounded-circle mb-3">
+                            <h5 class="card-title mb-2">Pavan Mahant</h5>
+                            <p class="text-muted mb-3">2st Year</p>
+                            <p class="card-text">David drives our marketing initiatives with creative strategies that
+                                help us connect with our audience effectively.</p>
+                            <div class="social-links mt-3">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+            </div>
+            <!-- Call to Action -->
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h4 class="mb-3">Want to Join Our Team?</h4>
+                    <p class="text-muted mb-4">We're always looking for talented individuals to join our growing team.
+                    </p>
+                    <a href="#" class="btn btn-primary btn-lg">View Open Positions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Us Section -->
+    <section class="join-section" id="join">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Join Our Sacred Family</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">
+                        Become part of KIRTI Parivar and embark on a transformative spiritual journey.
+                        Connect with like-minded souls dedicated to spreading Sant Kabir's teachings.
+                    </p>
+                    <div class="join-benefits" data-aos="fade-up" data-aos-delay="200">
+                        <div class="benefit-item">
+                            <i class="fas fa-pray"></i>
+                            <span>Weekly Satsang and Meditation Sessions</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-book-open"></i>
+                            <span>Study Groups on Sant Kabir's Teachings</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-hands-helping"></i>
+                            <span>Community Service Opportunities</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-users"></i>
+                            <span>Connect with Spiritual Community</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-join btn-lg" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-heart me-2"></i>Join KIRTI Parivar
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Team Section -->
-    <section class="section team" id="team">
-        <h2 class="animate-on-scroll">Meet Our KIRTI Family</h2>
-        <div class="team-grid">
-            <div class="team-card animate-on-scroll">
-                <div class="team-avatar">
-                    <img src="./kriti.png" height="60px">
+    <section class="team-section" id="team">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up" style="color: #f7931e;">Our Guiding Lights</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <i class="fas fa-user fa-3x text-white"></i>
+                        </div>
+                        <h5>Spiritual Guide</h5>
+                        <p class="team-role">Sant Kabir Teachings Coordinator</p>
+                        <p>Leading the spiritual journey and spreading the wisdom of Sant Kabir to young minds through
+                            daily satsang and meditation.</p>
+                    </div>
                 </div>
-                <h3>Himanshu Patil</h3>
-                <div class="role">Youth Leader & Guide</div>
-            </div>
-            <div class="team-card animate-on-scroll">
-                <div class="team-avatar">
-                    <img src="./kriti.png" height="60px">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <i class="fas fa-heart fa-3x text-white"></i>
+                        </div>
+                        <h5>Community Coordinator</h5>
+                        <p class="team-role">Youth Outreach & Social Service</p>
+                        <p>Organizing community service activities and connecting with youth to spread awareness about
+                            Sant Kabir's teachings.</p>
+                    </div>
                 </div>
-                <h3>Sanchit Patil</h3>
-                <div class="role">Visionary Trustee</div>
-            </div>
-            <div class="team-card animate-on-scroll">
-                <div class="team-avatar">
-                    <img src="./kriti.png" height="60px">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <i class="fas fa-hands-helping fa-3x text-white"></i>
+                        </div>
+                        <h5>Service Volunteer</h5>
+                        <p class="team-role">Seva & Cultural Activities</p>
+                        <p>Dedicated to selfless service and organizing cultural programs that celebrate Sant Kabir's
+                            philosophy and teachings.</p>
+                    </div>
                 </div>
-                <h3>Ayush Lolusare</h3>
-                <div class="role">Spiritual Guide</div>
-            </div>
-            <div class="team-card animate-on-scroll">
-                <div class="team-avatar">
-                    <img src="./kriti.png" height="60px">
-                </div>
-                <h3>Kunal Lolusare</h3>
-                <div class="role">Volunteer Educators</div>
-            </div>
-        </div>
-        <br>
-        <div class="team-grid">
-            <div class="team-card animate-on-scroll">
-                <div class="team-avatar">
-                    <img src="./kriti.png" height="60px">
-                </div>
-                <h3>Kunal Tadge</h3>
-                <div class="role">Youth Leader & Guide</div>
-            </div>
-            <div class="team-card animate-on-scroll">
-                <div class="team-avatar">
-                    <img src="./kriti.png" height="60px">
-                </div>
-                <h3>Arthav Bhajan</h3>
-                <div class="role">Visionary Trustee</div>
-            </div>
-            <div class="team-card animate-on-scroll">
-                <div class="team-avatar">
-                    <img src="./kriti.png" height="60px">
-                </div>
-                <h3>Shubham Nakade</h3>
-                <div class="role">Spiritual Guide</div>
-            </div>
-            <div class="team-card animate-on-scroll">
-                <div class="team-avatar">
-                    <img src="./kriti.png" height="60px">
-                </div>
-                <h3>Anvesh Mahant</h3>
-                <div class="role">Volunteer Educators</div>
-            </div>
-        </div>
-        <br>
-        <div class="team-grid">
-            <div class="team-card animate-on-scroll">
-                <div class="team-avatar">
-                    <img src="./kriti.png" height="60px">
-                </div>
-                <h3>Pavan Mahant</h3>
-                <div class="role">Youth Leader & Guide</div>
-            </div>
-            <div class="team-card animate-on-scroll">
-                <div class="team-avatar">
-                    <img src="./kriti.png" height="60px">
-                </div>
-                <h3>Akshay Lone</h3>
-                <div class="role">Visionary Trustee</div>
-            </div>
-            <div class="team-card animate-on-scroll">
-                <div class="team-avatar">
-                    <img src="./kriti.png" height="60px">
-                </div>
-                <h3>Gaurav Mahant</h3>
-                <div class="role">Spiritual Guide</div>
-            </div>
-            <div class="team-card animate-on-scroll">
-                <div class="team-avatar">
-                    <img src="./kriti.png" height="60px">
-                </div>
-                <h3>Ayush Mahant</h3>
-                <div class="role">Volunteer Educators</div>
             </div>
         </div>
     </section>
+<!-- dohe -->
+  <div class="card text-center border-0 shadow p-4">
+ 
+    <p class="fs-5 fw-semibold"> 
+काल करे सो आज कर, आज करे सो अब। <br>
+पल में परलय होएगी, बहुरि करेगा कब।।
+    </p>
+   
+  </div>
+<br>
+    <!-- Blog Section -->
+    <section class="blog-section" id="ourkritiblogs">
+        <div class="container-fluid px-4 px-lg-5">
+            <!-- Animated Background Elements -->
+            <div class="floating-elements">
+                <div class="floating-circle circle-1"></div>
+                <div class="floating-circle circle-2"></div>
+                <div class="floating-circle circle-3"></div>
+            </div>
+
+            <!-- Section Header -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <div class="section-badge" >
+                        <i class="fas fa-bookmark me-2"></i>
+                        Latest Stories
+                    </div>
+                    <h2 class="section-title">
+                        Discover Amazing
+                        <span class="gradient-text">Stories</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Dive into our curated collection of insights, trends, and innovations
+                        that are shaping the future of technology and design.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Featured Blog Post -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="featured-card">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-lg-6">
+                                <div class="featured-image">
+                                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                                        alt="Featured Post" class="img-fluid">
+                                    <div class="image-overlay">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="featured-content">
+                                    <div class="post-meta">
+                                        <span class="category-tag featured-tag">
+                                            <i class="fas fa-star me-1"></i>Featured
+                                        </span>
+                                        <span class="post-date">June 15, 2025</span>
+                                    </div>
+                                    <h3 class="featured-title">
+                                        The Revolutionary Impact of AI on Modern Workspace Design
+                                    </h3>
+                                    <p class="featured-excerpt">
+                                        Explore how artificial intelligence is transforming the way we design
+                                        and interact with our workspaces. From smart automation to predictive
+                                        analytics, discover the future of work environments.
+                                    </p>
+                                    <div class="author-info">
+                                        <div class="author-avatar">
+                                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                                alt="Author">
+                                        </div>
+                                        <div class="author-details">
+                                            <span class="author-name">Sarah Johnson</span>
+                                            <span class="read-time">8 min read</span>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="featured-btn">
+                                        Read Full Story
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="row g-4">
+                <!-- Blog Card 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <article class="blog-card">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Web Development Trends">
+                            <div class="card-overlay">
+                                <div class="bookmark-btn">
+                                    <i class="far fa-bookmark"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="post-meta">
+                                <span class="category-tag tech">
+                                    <i class="fas fa-code me-1"></i>Technology
+                                </span>
+                                <span class="post-date">June 12, 2025</span>
+                            </div>
+                            <h4 class="card-title">
+                                <a href="#">Next-Gen Web Development: Beyond React and Vue</a>
+                            </h4>
+                            <p class="card-excerpt">
+                                Discover the emerging frameworks and technologies that are set to revolutionize
+                                web development in the coming years.
+                            </p>
+                            <div class="card-footer">
+                                <div class="author-mini">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                        alt="Author">
+                                    <span>Alex Chen</span>
+                                </div>
+                                <span class="read-time">6 min</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Blog Card 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <article class="blog-card">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Digital Marketing">
+                            <div class="card-overlay">
+                                <div class="bookmark-btn">
+                                    <i class="far fa-bookmark"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="post-meta">
+                                <span class="category-tag marketing">
+                                    <i class="fas fa-chart-line me-1"></i>Marketing
+                                </span>
+                                <span class="post-date">June 10, 2025</span>
+                            </div>
+                            <h4 class="card-title">
+                                <a href="#">The Psychology of Color in Digital Marketing</a>
+                            </h4>
+                            <p class="card-excerpt">
+                                Learn how color psychology can dramatically impact your conversion rates
+                                and brand perception in digital campaigns.
+                            </p>
+                            <div class="card-footer">
+                                <div class="author-mini">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                        alt="Author">
+                                    <span>Emma Davis</span>
+                                </div>
+                                <span class="read-time">5 min</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Blog Card 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <article class="blog-card">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="UX Design">
+                            <div class="card-overlay">
+                                <div class="bookmark-btn">
+                                    <i class="far fa-bookmark"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="post-meta">
+                                <span class="category-tag design">
+                                    <i class="fas fa-palette me-1"></i>Design
+                                </span>
+                                <span class="post-date">June 8, 2025</span>
+                            </div>
+                            <h4 class="card-title">
+                                <a href="#">Microinteractions: The Secret to Delightful UX</a>
+                            </h4>
+                            <p class="card-excerpt">
+                                Explore how small, purposeful interactions can create memorable user
+                                experiences that keep users engaged and coming back.
+                            </p>
+                            <div class="card-footer">
+                                <div class="author-mini">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                        alt="Author">
+                                    <span>Michael Rodriguez</span>
+                                </div>
+                                <span class="read-time">7 min</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+        
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        .blog-section {
+            padding: 80px 0;
+            position: relative;
+            background: rgba(255, 107, 53, 0.95);
+            min-height: 100vh;
+        }
+
+        /* Floating Background Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .circle-1 {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .circle-2 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .circle-3 {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        /* Section Header */
+        .section-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Featured Card */
+        .featured-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .featured-image {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .featured-card:hover .featured-image img {
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: yellow;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .featured-card:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #667eea;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .featured-card:hover .play-button {
+            transform: scale(1);
+        }
+
+        .featured-content {
+            padding: 40px;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .category-tag {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .featured-tag {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: white;
+        }
+
+        .post-date {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .featured-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .featured-excerpt {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .author-avatar img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .read-time {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .featured-btn {
+            display: inline-flex;
+            align-items: center;
+            background: yellow;
+
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .featured-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px yellow;
+            color: white;
+        }
+
+        /* Blog Cards */
+        .blog-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent);
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            padding: 15px;
+        }
+
+        .bookmark-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        .blog-card:hover .bookmark-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .bookmark-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .tech {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .marketing {
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            color: white;
+        }
+
+        .design {
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            color: white;
+        }
+
+        .card-title {
+            margin: 15px 0;
+        }
+
+        .card-title a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            line-height: 1.4;
+            transition: color 0.3s ease;
+        }
+
+        .card-title a:hover {
+            color: #667eea;
+        }
+
+        .card-excerpt {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .author-mini {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .author-mini img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-mini span {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        /* Load More Button */
+        .load-more-btn {
+            position: relative;
+            padding: 15px 40px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .load-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-bg {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .load-more-btn:hover .btn-bg {
+            left: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .featured-content {
+                padding: 25px;
+            }
+
+            .featured-title {
+                font-size: 1.5rem;
+            }
+
+            .card-content {
+                padding: 20px;
+            }
+        }
+    </style>
 
     <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <h2 class="animate-on-scroll">Connect With Us</h2>
-        <div class="contact-grid">
-            <div class="contact-info animate-on-scroll">
-                <h3>Visit Kabir Kuti</h3>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <strong>Address:</strong><br>
-                        Kabir Kuti, Rohana<br>
-                        Muzaffarnagar, Uttar Pradesh
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <strong>Phone:</strong><br>
-                        +91-XXXXXXXXXX
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <strong>Email:</strong><br>
-                        contact@kirtirohana.org
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-globe"></i>
-                    <div>
-                        <strong>Website:</strong><br>
-                        www.kirtirohana.org
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up" style="color: #f7931e;">Connect with Us</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-info" data-aos="fade-up" data-aos-delay="100">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Sacred Location</strong><br>
+                                Kabir Kuti, Rohana<br>
+                                A place of peace and wisdom
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Satsang Timings</strong><br>
+                                Daily: 6:00 AM - 8:00 AM<br>
+                                Evening: 6:00 PM - 8:00 PM
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-heart"></i>
+                            <div>
+                                <strong>Our Mission</strong><br>
+                                Spreading Sant Kabir's teachings<br>
+                                Building a compassionate community
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <strong>Join Our Family</strong><br>
+                                Open to all seekers<br>
+                                Weekly gatherings and activities
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
-
+<!-- dohe -->
+  <div class="card text-center border-0 shadow p-4">
+ 
+    <p class="fs-5 fw-semibold"> 
+जहाँ दया तहाँ धर्म है, जहाँ लोभ तहाँ पाप। <br>
+जहाँ क्रोध तहाँ काल है, जहाँ क्षमा तहाँ आप।।
+    </p>
+   
+  </div>
+<br>
     <!-- Footer -->
     <footer class="footer">
-        <div class="social-links">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h4 class="mb-3" style="color: #f7931e;">KIRTI Parivar</h4>
+                    <p class="mb-3">Kabir Inspired Rohana Trust Initiative</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    <div class="kabir-quote mt-4 p-3"
+                        style="background: rgba(255, 255, 255, 0.1); border-radius: 10px;">
+                        <p style="margin: 0; font-style: italic;">
+                            "गुरु गोविंद दोऊ खड़े, काके लागूं पांय।<br>
+                            बलिहारी गुरु आपने, गोविंद दियो मिलाय।।"
+                        </p>
+                        <small style="opacity: 0.8;">- Sant Kabir</small>
+                    </div>
+                    <hr style="border-color: rgba(255, 255, 255, 0.2); margin: 2rem 0;">
+                    <p style="margin: 0; opacity: 0.8;">&copy; 2024 KIRTI Parivar. Spreading love and wisdom through
+                        Sant Kabir's teachings.</p>
+                </div>
+            </div>
         </div>
-        <p>&copy; 2025 KIRTI Parivar - Kabir Inspired Rohana Trust Initiative</p>
-        <p>🌺 <em>Dhani Dhanya Kabir Sahib Ki Mahima</em> 🌺</p>
-        <p>Come, sit in peace at Kabir Kuti. Let your heart find its path.</p>
     </footer>
 
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
     <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Progress bar
+        window.addEventListener('scroll', function () {
+            const progressBar = document.querySelector('.progress-bar-scroll');
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1011,101 +2196,41 @@
             });
         });
 
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Animate elements on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all elements with animate-on-scroll class
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Create floating particles
-        function createParticles() {
-            const particlesContainer = document.querySelector('.particles');
-            const particleCount = 50;
-
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-
-                // Random horizontal position
-                particle.style.left = Math.random() * 100 + '%';
-
-                // Random animation delay
-                particle.style.animationDelay = Math.random() * 6 + 's';
-
-                // Random animation duration
-                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
-
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // Initialize particles when page loads
-        window.addEventListener('load', createParticles);
-
-        // Mobile menu functionality
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-            mobileMenu.classList.toggle('active');
-        });
-
-        // Form submission
-        const contactForm = document.querySelector('form');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            // Get form data
-            const formData = new FormData(contactForm);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const phone = formData.get('phone');
-            const message = formData.get('message');
-
-            // Simple validation
-            if (!name || !email || !message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            // Simulate form submission
-            alert(`Thank you, ${name}! Your message has been received. We will contact you soon at ${email}.`);
-            contactForm.reset();
-        });
-
         // Add parallax effect to hero section
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', function () {
+            const hero = document.querySelector('.hero');
             const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.hero');
-            const speed = scrolled * 0.5;
-            parallax.style.transform = `translateY(${speed}px)`;
+            const rate = scrolled * -0.5;
+            if (hero) {
+                hero.style.transform = `translateY(${rate}px)`;
+            }
         });
 
-        // Add typewriter effect to hero text
+        // Add hover effects to gallery items
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+
+            item.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add interactive elements to mission cards
+        document.querySelectorAll('.mission-card').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-15px) rotateY(5deg)';
+                this.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.3)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) rotateY(0deg)';
+                this.style.boxShadow = '';
+            });
+        });
+
+        // Add typing effect to hero text
         function typeWriter(element, text, speed = 100) {
             let i = 0;
             element.innerHTML = '';
@@ -1120,262 +2245,101 @@
             type();
         }
 
-        // Initialize typewriter effect after page load
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const heroTitle = document.querySelector('.hero h1');
+        // Initialize typing effect when page loads
+        window.addEventListener('load', function () {
+            const heroTitle = document.querySelector('.hero-content h1');
+            if (heroTitle) {
                 const originalText = heroTitle.textContent;
-                typeWriter(heroTitle, originalText, 150);
-            }, 2000);
-        });
-
-        // Add hover effect to cards
-        document.querySelectorAll('.mission-card, .teaching-card, .team-card').forEach(card => {
-            card.addEventListener('mouseenter', function () {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-
-            card.addEventListener('mouseleave', function () {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Add click animation to CTA button
-        document.querySelector('.cta-button').addEventListener('click', function (e) {
-            // Create ripple effect
-            const ripple = document.createElement('span');
-            const rect = this.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            ripple.classList.add('ripple');
-
-            this.appendChild(ripple);
-
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
-
-        // Add loading animation
-        window.addEventListener('load', () => {
-            document.body.classList.add('loaded');
-        });
-
-        // Smooth reveal animation for sections
-        const revealElements = document.querySelectorAll('.section');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        revealElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(50px)';
-            el.style.transition = 'all 0.8s ease';
-            revealObserver.observe(el);
-        });
-
-        // Add dynamic background colors
-        const sections = document.querySelectorAll('.section');
-        const colors = ['#ff6b35', '#f7931e', '#ff8c42', '#ff7733'];
-
-        sections.forEach((section, index) => {
-            section.addEventListener('mouseenter', () => {
-                section.style.borderTop = `5px solid ${colors[index % colors.length]}`;
-            });
-
-            section.addEventListener('mouseleave', () => {
-                section.style.borderTop = 'none';
-            });
-        });
-
-        // Add scroll progress indicator
-        const progressBar = document.createElement('div');
-        progressBar.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 4px;
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
-            z-index: 10000;
-            transition: width 0.3s ease;
-        `;
-        document.body.appendChild(progressBar);
-
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.body.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            progressBar.style.width = scrollPercent + '%';
-        });
-
-        // Add Easter egg - Kabir quote appears on multiple clicks
-        let clickCount = 0;
-        const logo = document.querySelector('.logo');
-        logo.addEventListener('click', () => {
-            clickCount++;
-            if (clickCount === 5) {
-                const quote = document.createElement('div');
-                quote.innerHTML = `
-                    <div style="
-                        position: fixed;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        background: linear-gradient(45deg, #ff6b35, #f7931e);
-                        color: white;
-                        padding: 2rem;
-                        border-radius: 20px;
-                        text-align: center;
-                        z-index: 10000;
-                        max-width: 400px;
-                        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-                        animation: fadeInScale 0.5s ease;
-                    ">
-                        <h3>🌟 Sant Kabir's Blessing 🌟</h3>
-                        <p style="font-style: italic; margin: 1rem 0;">
-                            "Sadho, ye murda ghar hai, yahan koi na jaage<br>
-                            Ghar ki naari so rahe, chor muhalle aage"
-                        </p>
-                        <p>Wake up, O seeker! Don't sleep in ignorance.</p>
-                        <button onclick="this.parentElement.parentElement.remove()" 
-                                style="background: white; color: #ff6b35; border: none; padding: 10px 20px; border-radius: 20px; margin-top: 1rem; cursor: pointer;">
-                            🙏 Dhanyawad
-                        </button>
-                    </div>
-                `;
-                document.body.appendChild(quote);
-                clickCount = 0;
+                setTimeout(() => {
+                    typeWriter(heroTitle, originalText, 150);
+                }, 1000);
             }
         });
 
-        // Add CSS for ripple effect
+        // Add floating animation to team avatars
+        document.querySelectorAll('.team-avatar').forEach((avatar, index) => {
+            setInterval(() => {
+                avatar.style.transform = `translateY(${Math.sin(Date.now() * 0.002 + index) * 5}px)`;
+            }, 50);
+        });
+
+        // Add click effects to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.6);
+                    transform: scale(0);
+                    animation: ripple-effect 0.6s ease-out;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    pointer-events: none;
+                `;
+
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add CSS animation for ripple effect
         const style = document.createElement('style');
         style.textContent = `
-            .ripple {
-                position: absolute;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.6);
-                pointer-events: none;
-                animation: ripple-animation 0.6s ease-out;
-            }
-
-            @keyframes ripple-animation {
+            @keyframes ripple-effect {
                 to {
                     transform: scale(2);
                     opacity: 0;
                 }
             }
-
-            @keyframes fadeInScale {
-                from {
-                    opacity: 0;
-                    transform: translate(-50%, -50%) scale(0.8);
-                }
-                to {
-                    opacity: 1;
-                    transform: translate(-50%, -50%) scale(1);
-                }
-            }
-
-            .loaded {
-                animation: pageLoad 1s ease;
-            }
-
-            @keyframes pageLoad {
-                from {
-                    opacity: 0;
-                }
-                to {
-                    opacity: 1;
-                }
-            }
-
-            /* Mobile menu styles */
-            @media (max-width: 768px) {
-                .nav-links {
-                    display: none;
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    width: 100%;
-                    background: rgba(255, 107, 53, 0.95);
-                    backdrop-filter: blur(10px);
-                    flex-direction: column;
-                    padding: 1rem 0;
-                    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-                }
-
-                .nav-links.show {
-                    display: flex;
-                }
-
-                .mobile-menu.active span:nth-child(1) {
-                    transform: rotate(-45deg) translate(-5px, 6px);
-                }
-
-                .mobile-menu.active span:nth-child(2) {
-                    opacity: 0;
-                }
-
-                .mobile-menu.active span:nth-child(3) {
-                    transform: rotate(45deg) translate(-5px, -6px);
-                }
-            }
-
-            /* Additional hover effects */
-            .nav-links a:hover {
-                text-shadow: 0 0 10px rgba(255,255,255,0.8);
-            }
-
-            .social-links a:hover {
-                text-shadow: 0 0 15px currentColor;
-            }
-
-            .contact-item:hover i {
-                animation: bounce 0.5s ease;
-            }
-
-            .team-avatar:hover {
-                animation: rotate 0.5s ease;
-            }
-
-            @keyframes rotate {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
-            }
-
-            /* Scroll animations */
-            .animate-on-scroll {
-                opacity: 0;
-                transform: translateY(50px);
-                transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            }
-
-            .animate-on-scroll.animated {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            .animate-on-scroll:nth-child(even) {
-                transform: translateX(-50px);
-            }
-
-            .animate-on-scroll:nth-child(even).animated {
-                transform: translateX(0);
-            }
         `;
         document.head.appendChild(style);
+
+        // Add scroll-triggered animations for contact items
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideInLeft 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.contact-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Add slideInLeft animation
+        const slideStyle = document.createElement('style');
+        slideStyle.textContent = `
+            @keyframes slideInLeft {
+                from {
+                    transform: translateX(-100px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(slideStyle);
     </script>
 </body>
 
